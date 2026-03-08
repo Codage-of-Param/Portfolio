@@ -15,6 +15,7 @@
     --bg-main: hsl(var(--hue-color), 20%, 6%);
     --bg-panel: hsla(var(--hue-color), 25%, 15%, 0.4);
     --bg-card: hsla(var(--hue-color), 20%, 20%, 0.3);
+    --bg-hero-card: hsla(var(--hue-color), 20%, 28%, 0.6);
     
     /* Accents */
     --accent-primary: hsl(260, 100%, 65%);
@@ -71,6 +72,7 @@ body.light-theme {
     --bg-main: hsl(var(--hue-color), 20%, 95%);
     --bg-panel: hsla(var(--hue-color), 25%, 90%, 0.6);
     --bg-card: hsla(var(--hue-color), 20%, 100%, 0.5);
+    --bg-hero-card: hsla(var(--hue-color), 20%, 100%, 0.85);
     
     --text-primary: hsl(var(--hue-color), 20%, 15%);
     --text-secondary: hsl(var(--hue-color), 15%, 35%);
@@ -88,10 +90,43 @@ body.light-theme .header.scroll-header {
     background: hsla(var(--hue-color), 20%, 95%, 0.85);
 }
 
-@media screen and (max-width: 768px) {
+/* Always blurred light header on mobile and mid-size */
+@media screen and (max-width: 967px) {
+    body.light-theme .header {
+        background: hsla(var(--hue-color), 20%, 95%, 0.85);
+    }
     body.light-theme .nav-menu {
         background: hsla(var(--hue-color), 25%, 95%, 0.85); 
     }
+}
+
+/* Light Theme Component Overrides */
+body.light-theme .project-overlay .btn-outline {
+    background: hsla(var(--hue-color), 20%, 95%, 0.95);
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+body.light-theme .project-overlay .btn-outline:hover {
+    background: var(--text-primary);
+    color: var(--bg-main);
+}
+
+body.light-theme .footer-title,
+body.light-theme .footer-link,
+body.light-theme .footer-copy {
+    color: var(--text-primary);
+}
+
+body.light-theme .footer-social-link {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+}
+
+body.light-theme .footer-social-link:hover {
+    background-color: var(--accent-primary);
+    color: #fff;
 }
 
 body.blue-theme {
@@ -99,6 +134,7 @@ body.blue-theme {
     --bg-main: hsl(var(--hue-color), 50%, 8%);
     --bg-panel: hsla(var(--hue-color), 40%, 15%, 0.5);
     --bg-card: hsla(var(--hue-color), 30%, 20%, 0.4);
+    --bg-hero-card: hsla(var(--hue-color), 30%, 25%, 0.6);
     
     --accent-primary: hsl(210, 100%, 65%);
     --accent-secondary: hsl(180, 100%, 45%);
@@ -475,6 +511,16 @@ img {
     box-shadow: 0 4px 20px hsla(0,0%,0%,0.2);
 }
 
+/* Always blurred header on mobile and mid-size */
+@media screen and (max-width: 967px) {
+    .header {
+        background: hsla(var(--hue-color), 20%, 6%, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-glass);
+    }
+}
+
 .nav-container {
     height: 80px;
     display: flex;
@@ -486,11 +532,50 @@ img {
     font-family: var(--font-accent);
     font-size: 1.8rem;
     font-weight: var(--font-bold);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-short, .logo-text-full {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+
+/* Default state (top of page): Show PC */
+.logo-text-short {
+    opacity: 1;
+    max-width: 50px;
+    transform: scale(1);
+}
+
+.logo-text-full {
+    opacity: 0;
+    max-width: 0;
+    transform: scale(0.8);
+    margin-left: 0;
+}
+
+/* Scrolled state: Show Param Chotaliya */
+.logo.scrolled .logo-text-short {
+    opacity: 0;
+    max-width: 0;
+    transform: scale(0.8);
+}
+
+.logo.scrolled .logo-text-full {
+    opacity: 1;
+    max-width: 300px;
+    transform: scale(1);
+    margin-left: 5px; /* slight spacing adjustment if needed */
 }
 
 .nav-list {
@@ -538,7 +623,7 @@ img {
 }
 
 /* Mobile Nav */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 967px) {
     .nav-menu {
         position: fixed;
         top: 0;
@@ -592,6 +677,26 @@ img {
     min-height: 100vh;
 }
 
+/* Default mobile/tablet layout: stack and center text */
+@media screen and (max-width: 967px) {
+    .home-data {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .home-buttons {
+        justify-content: center;
+    }
+
+    .home-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Desktop layout: side by side */
 @media screen and (min-width: 968px) {
     .home-container {
         grid-template-columns: 1fr 1fr;
@@ -673,6 +778,7 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: var(--bg-hero-card);
     box-shadow: var(--shadow-glow);
     transform-style: preserve-3d;
 }
@@ -878,6 +984,7 @@ img {
     color: var(--accent-primary);
     background: transparent;
     z-index: 2;
+    animation: float-card 6s ease-in-out infinite;
 }
 
 .about-description {
@@ -1353,4 +1460,106 @@ img {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* --- Global Responsive Adjustments --- */
+/* For small devices (350px and below) */
+@media screen and (max-width: 350px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .logo.scrolled .logo-text-full {
+        max-width: 140px;
+    }
+    
+    .nav-btns {
+        gap: 0.5rem;
+    }
+    
+    .hero-card {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1rem;
+    }
+    
+    .home-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .skills-box {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-info-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* For medium devices (576px and below) */
+@media screen and (max-width: 576px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .logo.scrolled .logo-text-full {
+        max-width: 180px;
+    }
+
+    .home-subtitle {
+        font-size: var(--h3-font);
+        height: 40px;
+    }
+    
+    .project-img {
+        font-size: 3rem;
+    }
+    
+    /* Ensure tooltips behave nicely on touch devices */
+    .tooltip-text {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+        white-space: normal;
+        width: max-content;
+        max-width: 120px;
+    }
+    
+    .about-info {
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+}
+
+/* For larger tablets (768px and up) */
+@media screen and (min-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
+    
+    .section {
+        padding: 7rem 0 2rem;
+    }
+}
+
+/* For large desktops (992px and up) */
+@media screen and (min-width: 992px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .nav-container {
+        column-gap: 3rem;
+    }
 }
