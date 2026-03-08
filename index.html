@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Param Chotaliya | Portfolio</title>
+    <meta name="description" content="Professional portfolio of Param Chotaliya, showcasing projects, skills, and experience.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    
+    <!-- Background Effects -->
+    <div class="glow-overlay"></div>
+    <div class="ml-bg-elements">
+        <i class="fas fa-network-wired ml-icon"></i>
+        <i class="fas fa-brain ml-icon"></i>
+        <i class="fas fa-database ml-icon"></i>
+        <span class="ml-math">f(x) = wx + b</span>
+        <span class="ml-math">∇L = ∂L / ∂W</span>
+    </div>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <header class="header glass-nav" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">Param Chotaliya</span>
+                
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#hero" class="nav-link active-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </nav>
+
+            <div class="nav-btns">
+                <button id="theme-toggle" class="nav-theme-btn" title="Toggle Theme">
+                    <i class="fas fa-adjust"></i>
+                </button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        
+        <!-- Hero Section -->
+        <section class="home section" id="hero">
+            <div class="container home-container grid">
+                <div class="home-data">
+                    <span class="home-greeting">Hello, I'm</span>
+                    <h1 class="home-title">Param Chotaliya</h1>
+                    <h3 class="home-subtitle">
+                        <span class="typing-text"></span><span class="cursor">&nbsp;</span>
+                    </h3>
+                    <p class="home-description">
+                        "I am a <b>Computer Science student and Data Science enthusiast</b> dedicated to building intelligent, scalable applications. By combining robust software architecture with machine learning insights, I transform complex data into functional, high-impact digital experiences."
+                    </p>
+                    <div class="home-buttons">
+                        <a href="#projects" class="btn btn-primary">View Work</a>
+                        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+                    </div>
+                </div>
+
+                <div class="home-visual">
+                    <div class="glass-card hero-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="profile-circle">
+                                    <img src="assets/img/profile-photo.jpg" alt="Param Chotaliya" class="profile-img">
+                                </div>
+                                <h4>Data Scientist</h4>
+                                <div class="tech-stack-mini">
+                                    <div class="tooltip-container">
+                                        <img src="assets/img/python-logo.svg" alt="Python Logo" class="tech-stack-icon">
+                                        <span class="tooltip-text">Python</span>
+                                    </div>
+                                    <div class="tooltip-container">
+                                        <img src="assets/img/pandas-logo.svg" alt="Pandas Logo" class="tech-stack-icon">
+                                        <span class="tooltip-text">Pandas</span>
+                                    </div>
+                                    <div class="tooltip-container">
+                                        <img src="assets/img/numpy-logo.svg" alt="NumPy Logo" class="tech-stack-icon">
+                                        <span class="tooltip-text">NumPy</span>
+                                    </div>
+                                    <div class="tooltip-container">
+                                        <img src="assets/img/tensorflow-logo.svg" alt="TensorFlow Logo" class="tech-stack-icon">
+                                        <span class="tooltip-text">TensorFlow</span>
+                                    </div>
+                                    <div class="tooltip-container">
+                                        <img src="assets/img/scikit-learn-logo.svg" alt="Scikit-Learn Logo" class="tech-stack-icon">
+                                        <span class="tooltip-text">Scikit-Learn</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <a href="#about">
+                    <div class="mouse"></div>
+                    <p>Scroll Down</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <span class="section-subtitle">My Introduction</span>
+
+                <div class="about-container grid">
+                    <div class="about-img-wrapper glass-panel">
+                        <img src="assets/img/profile-photo.jpg" alt="Param Chotaliya" class="about-img" style="object-fit: cover; border-radius: 12px;">
+                    </div>
+
+                    <div class="about-data">
+                        <p class="about-description">
+                            I am a passionate Data scientist and Machine learning engineer dedicated to building high-quality, scalable, and visually stunning applications. I love tackling complex challenges and constantly learning new technologies to stay ahead of the curve.
+                        </p>
+
+                        <div class="about-info relative-container">
+                            <div class="info-box glass-card-small" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                <i class="fas fa-award info-icon" style="transform: translateZ(20px)"></i>
+                                <h3 class="info-title" style="transform: translateZ(15px)">Experience</h3>
+                                <span class="info-subtitle" style="transform: translateZ(10px)">Fresher</span>
+                            </div>
+                            <div class="info-box glass-card-small" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                <i class="fas fa-briefcase info-icon" style="transform: translateZ(20px)"></i>
+                                <h3 class="info-title" style="transform: translateZ(15px)">Completed</h3>
+                                <span class="info-subtitle" style="transform: translateZ(10px)">2 projects</span>
+                            </div>
+                            <div class="info-box glass-card-small" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                <i class="fas fa-headset info-icon" style="transform: translateZ(20px)"></i>
+                                <h3 class="info-title" style="transform: translateZ(15px)">Support</h3>
+                                <span class="info-subtitle" style="transform: translateZ(10px)">Online 24/7</span>
+                            </div>
+                        </div>
+
+                        <a href="#contact" class="btn btn-primary mt-4">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <span class="section-subtitle">My Technical Level</span>
+
+                <div class="skills-container grid">
+
+                    <div class="skills-content glass-panel">
+                        <h3 class="skills-title"><i class="fas fa-brain"></i> Data Science & AI</h3>
+                        <div class="skills-box">
+                            <div class="skills-group">
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">Python</h3>
+                                        <span class="skills-level">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">Pandas</h3>
+                                        <span class="skills-level">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">NumPy</h3>
+                                        <span class="skills-level">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skills-group">
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">Scikit-Learn</h3>
+                                        <span class="skills-level">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">Matplotlib</h3>
+                                        <span class="skills-level">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skills-data">
+                                    <i class="fas fa-badge-check"></i>
+                                    <div>
+                                        <h3 class="skills-name">TensorFlow</h3>
+                                        <span class="skills-level">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <span class="section-subtitle">Most Recent Work</span>
+
+                <div class="projects-container grid">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card relative-container" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                        <div class="project-img-container">
+                            <div class="placeholder-img project-img">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="https://github.com/Codage-of-Param/Adani_Hack_Innovate_Hackathon_2026" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">Code <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">The Clinker allocation</h3>
+                            <p class="project-description">Optimization and allocation system developed for the Adani Hack Innovate Hackathon 2026.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Data Science</span>
+                                <span>Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                        <div class="project-img-container">
+                            <div class="placeholder-img project-img">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="https://github.com/Codage-of-Param/Web-Scrapping" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">Code <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Quote is Scrapped</h3>
+                            <p class="project-description">A robust web scraping script designed to systematically extract quotes and related text data from web sources.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Web Scraping</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <span class="section-subtitle">Contact Me</span>
+
+                <div class="contact-container grid">
+                    <div class="contact-info">
+                        <h3 class="contact-title">Talk to me</h3>
+
+                        <div class="contact-info-cards">
+                            <a href="mailto:paramchotaliya56@gmail.com" class="contact-card glass-card-small" style="display: block; color: inherit; text-decoration: none;">
+                                <i class="far fa-envelope contact-card-icon"></i>
+                                <h3 class="contact-card-title">Email</h3>
+                                <span class="contact-card-data">paramchotaliya56@gmail.com</span>
+                                <span class="contact-button">
+                                    Write me <i class="fas fa-arrow-right contact-button-icon"></i>
+                                </span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/param-chotaliya-72834428a/" target="_blank" rel="noopener noreferrer" class="contact-card glass-card-small" style="display: block; color: inherit; text-decoration: none;">
+                                <i class="fab fa-linkedin contact-card-icon"></i>
+                                <h3 class="contact-card-title">LinkedIn</h3>
+                                <span class="contact-card-data">Param Chotaliya</span>
+                                <span class="contact-button">
+                                    Connect <i class="fas fa-arrow-right contact-button-icon"></i>
+                                </span>
+                            </a>
+
+                            <a href="https://github.com/Codage-of-Param" target="_blank" rel="noopener noreferrer" class="contact-card glass-card-small" style="display: block; color: inherit; text-decoration: none;">
+                                <i class="fab fa-github contact-card-icon"></i>
+                                <h3 class="contact-card-title">GitHub</h3>
+                                <span class="contact-card-data">Codage-of-Param</span>
+                                <span class="contact-button">
+                                    View repo <i class="fas fa-arrow-right contact-button-icon"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h3 class="contact-title">Write me your project</h3>
+
+                        <form action="https://formsubmit.co/paramchotaliya56@gmail.com" method="POST" class="contact-form glass-panel">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_template" value="box">
+                            
+                            <div class="contact-form-div">
+                                <label for="name" class="contact-form-tag">Name</label>
+                                <input type="text" name="name" id="name" placeholder="Insert your name" class="contact-form-input" required>
+                            </div>
+
+                            <div class="contact-form-div">
+                                <label for="email" class="contact-form-tag">Mail</label>
+                                <input type="email" name="email" id="email" placeholder="Insert your email" class="contact-form-input" required>
+                            </div>
+
+                            <div class="contact-form-div contact-form-area">
+                                <label for="message" class="contact-form-tag">Project</label>
+                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your project details" class="contact-form-input" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                Send Message <i class="far fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container footer-container">
+            <h1 class="footer-title">Param Chotaliya</h1>
+
+            <ul class="footer-list">
+                <li><a href="#about" class="footer-link">About</a></li>
+                <li><a href="#projects" class="footer-link">Projects</a></li>
+                <li><a href="#skills" class="footer-link">Skills</a></li>
+            </ul>
+
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/param-chotaliya-72834428a/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Codage-of-Param" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:paramchotaliya56@gmail.com" class="footer-social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <span class="footer-copy">
+                &#169; Param Chotaliya. All rights reserved.
+            </span>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
