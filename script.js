@@ -59,10 +59,13 @@ navLinks.forEach(n => n.addEventListener('click', linkAction));
 /* --- Change Background Header --- */
 function scrollHeader() {
     const header = document.getElementById('header');
+    const logo = document.getElementById('nav-logo');
     if (this.scrollY >= 50) {
         header.classList.add('scroll-header');
+        if (logo) logo.classList.add('scrolled');
     } else {
         header.classList.remove('scroll-header');
+        if (logo) logo.classList.remove('scrolled');
     }
 }
 window.addEventListener('scroll', scrollHeader);
@@ -151,7 +154,7 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home-data, .section-title, .section-subtitle`);
 sr.reveal(`.home-visual`, {delay: 500, origin: 'bottom'});
-sr.reveal(`.about-img`, {origin: 'left'});
+sr.reveal(`.about-img`, {scale: 0.5, origin: 'bottom', distance: '0px'});
 sr.reveal(`.about-data, .skills-content`, {origin: 'right'});
 sr.reveal(`.project-card, .contact-card`, {interval: 100});
 sr.reveal(`.contact-form-container`, {origin: 'right', delay: 200});
