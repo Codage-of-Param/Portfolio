@@ -33,17 +33,20 @@ if (themeToggleBtn) {
 /* --- Mobile Nav Toggle --- */
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
-const navClose = document.getElementById('nav-close');
 
 if (navToggle) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu');
-    });
-}
-
-if (navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
+        navMenu.classList.toggle('show-menu');
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+            if (navMenu.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
     });
 }
 
@@ -52,6 +55,13 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 function linkAction() {
     navMenu.classList.remove('show-menu');
+    if (navToggle) {
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
 }
 navLinks.forEach(n => n.addEventListener('click', linkAction));
 
@@ -301,4 +311,61 @@ if (canvas && typeof THREE !== 'undefined') {
     }
 
     animate();
+}
+
+/* --- Contact Form AJAX Submission --- */
+const contactForm = document.getElementById('contact-form');
+const successModal = document.getElementById('success-modal');
+const closeModalBtn = document.getElementById('close-modal');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending <i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/'), {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success modal
+                if (successModal) successModal.classList.add('active');
+                contactForm.reset();
+            } else {
+                alert('Oops! There was a problem submitting your form');
+            }
+        })
+        .catch(error => {
+            alert('Oops! There was a problem submitting your form');
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+}
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        if (successModal) successModal.classList.remove('active');
+    });
+}
+
+if (successModal) {
+    successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) {
+            successModal.classList.remove('active');
+        }
+    });
 }

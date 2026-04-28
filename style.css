@@ -93,10 +93,14 @@ body.light-theme .header.scroll-header {
 /* Always blurred light header on mobile and mid-size */
 @media screen and (max-width: 967px) {
     body.light-theme .header {
-        background: hsla(var(--hue-color), 20%, 95%, 0.85);
+        background: hsla(var(--hue-color), 20%, 95%, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
     body.light-theme .nav-menu {
-        background: hsla(var(--hue-color), 25%, 95%, 0.85); 
+        background: hsla(var(--hue-color), 25%, 95%, 0.6); 
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
     }
 }
 
@@ -333,7 +337,9 @@ img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: transparent;
+    background: hsla(0, 0%, 100%, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-glass);
     color: var(--text-primary);
     font-size: 1.2rem;
@@ -616,6 +622,8 @@ img {
     display: flex;
     align-items: center;
     gap: 1rem;
+    position: relative;
+    z-index: 105;
 }
 
 .nav-toggle, .nav-close {
@@ -656,17 +664,28 @@ img {
         font-size: var(--h3-font);
     }
 
-    .nav-toggle, .nav-close {
-        display: block;
-        font-size: 1.5rem;
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
         cursor: pointer;
         color: var(--text-primary);
+        background: hsla(0, 0%, 100%, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border-glass);
+        border-radius: 50%;
+        transition: 0.3s;
     }
-    
-    .nav-close {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
+
+    .nav-toggle:hover {
+        background: var(--accent-gradient);
+        color: #fff;
+        border-color: var(--accent-primary);
+        box-shadow: var(--shadow-glow);
     }
 }
 
@@ -1280,48 +1299,75 @@ img {
 .contact-form-div {
     position: relative;
     margin-bottom: var(--mb-2);
-    height: 4rem;
 }
 
 .contact-form-input {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    border: 2px solid var(--border-glass);
-    background: none;
+    background: hsla(0, 0%, 100%, 0.03); /* subtle glass fill */
+    border: 1px solid var(--border-glass);
     color: var(--text-primary);
     outline: none;
     border-radius: 0.75rem;
-    padding: 1.5rem;
-    z-index: 1;
+    padding: 1.5rem 1.25rem 0.5rem 1.25rem;
     font-family: var(--font-body);
-    transition: 0.3s;
+    font-size: var(--normal-font);
+    transition: 0.3s ease;
+    height: 4rem; /* Fixed height for inputs */
 }
 
 .contact-form-input:focus {
-    border: 2px solid var(--accent-primary);
-    box-shadow: 0 0 10px hsla(260, 100%, 65%, 0.2);
+    border-color: var(--accent-primary);
+    background: hsla(0, 0%, 100%, 0.06);
+    box-shadow: 0 4px 20px hsla(260, 100%, 65%, 0.1);
 }
 
 .contact-form-tag {
     position: absolute;
-    top: -0.75rem;
+    top: 50%;
     left: 1.25rem;
-    font-size: var(--smaller-font);
-    padding: 0.25rem;
-    background-color: var(--bg-panel);
-    z-index: 10;
-    border-radius: 4px;
+    transform: translateY(-50%);
+    font-size: var(--normal-font);
+    color: var(--text-secondary);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.contact-form-input:placeholder-shown::placeholder {
+    color: transparent;
+}
+
+.contact-form-input:focus::placeholder {
+    color: transparent; /* Keep placeholder hidden to maintain ultra-clean look */
+}
+
+.contact-form-input:focus ~ .contact-form-tag,
+.contact-form-input:not(:placeholder-shown) ~ .contact-form-tag {
+    top: 0.5rem;
+    transform: translateY(0);
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .contact-form-area {
-    height: 11rem;
+    height: auto;
 }
 
-.contact-form-area textarea {
+.contact-form-area .contact-form-input {
+    height: 10rem;
+    padding-top: 1.75rem;
     resize: none;
+}
+
+.contact-form-area .contact-form-tag {
+    top: 1.25rem;
+    transform: none;
+}
+
+.contact-form-area .contact-form-input:focus ~ .contact-form-tag,
+.contact-form-area .contact-form-input:not(:placeholder-shown) ~ .contact-form-tag {
+    top: 0.5rem;
 }
 
 /* --- Footer --- */
