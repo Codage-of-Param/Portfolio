@@ -98,9 +98,7 @@ body.light-theme .header.scroll-header {
         -webkit-backdrop-filter: blur(16px);
     }
     body.light-theme .nav-menu {
-        background: hsla(var(--hue-color), 25%, 95%, 0.6); 
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
+        background: var(--bg-main); 
     }
 }
 
@@ -193,7 +191,7 @@ ul {
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 img {
@@ -328,7 +326,7 @@ img {
 
 @keyframes float-ml {
     0% { transform: translateY(0) rotate(0deg) scale(1); }
-    50% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+    50% { transform: translateY(-10px) rotate(5deg) scale(1.02); }
     100% { transform: translateY(0) rotate(0deg) scale(1); }
 }
 
@@ -360,7 +358,7 @@ img {
 
 @keyframes float {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(50px, 50px) scale(1.1); }
+    100% { transform: translate(15px, 15px) scale(1.03); }
 }
 
 /* --- Glassmorphism Utils --- */
@@ -380,7 +378,7 @@ img {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-glass);
     border-radius: 16px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     transform-style: preserve-3d;
 }
 
@@ -636,18 +634,18 @@ img {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
-        max-width: 400px;
+        width: 100%;
+        max-width: 100%;
         height: 100vh;
-        background: hsla(var(--hue-color), 25%, 15%, 0.3); /* Made slightly more transparent to emphasize blur */
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        border-left: 1px solid var(--border-glass);
+        background: var(--bg-main);
+        border-left: none;
         padding: 4rem 2rem;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: var(--z-fixed);
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-menu.show-menu {
@@ -789,7 +787,8 @@ img {
 }
 
 .hero-card {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 420px;
     position: relative;
     display: flex;
@@ -808,12 +807,12 @@ img {
 
 @keyframes float-card {
     0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(0deg); }
-    50% { transform: translateY(-20px) rotateX(-5deg) rotateY(10deg); }
+    50% { transform: translateY(-6px) rotateX(-5deg) rotateY(10deg); }
 }
 
 .profile-circle {
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background: var(--accent-gradient);
     display: flex;
@@ -1128,7 +1127,7 @@ img {
     display: flex;
     flex-direction: column;
     transform-style: preserve-3d;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
@@ -1154,7 +1153,7 @@ img {
     font-size: 4rem;
     color: var(--accent-primary);
     background: hsla(var(--hue-color), 20%, 15%, 0.5);
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .project-overlay {
@@ -1166,7 +1165,7 @@ img {
     align-items: center;
     gap: 1rem;
     opacity: 0;
-    transition: 0.4s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .project-card:hover .project-overlay {
@@ -1231,9 +1230,19 @@ img {
 
 .contact-info-cards {
     display: grid;
-    row-gap: 1rem;
-    grid-template-columns: 300px;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
     justify-content: center;
+}
+
+@media screen and (min-width: 968px) {
+    .contact-info-cards {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 550px;
+        gap: 1.5rem;
+    }
 }
 
 .contact-card-icon {
@@ -1286,7 +1295,8 @@ img {
 }
 
 .contact-form {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     margin: 0 auto;
 }
 
@@ -1369,6 +1379,7 @@ img {
 .contact-form-area .contact-form-input:not(:placeholder-shown) ~ .contact-form-tag {
     top: 0.5rem;
 }
+
 
 /* --- Footer --- */
 .footer {
@@ -1471,24 +1482,33 @@ img {
 /* --- Scroll Up --- */
 .scrollup {
     position: fixed;
-    right: 1rem;
+    right: 1.5rem;
     bottom: -30%;
-    background-color: hsla(var(--hue-color), 20%, 20%, 0.8);
+    background-color: var(--bg-panel);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     opacity: 0.8;
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.4rem;
-    z-index: var(--z-tooltip);
-    transition: 0.4s;
+    padding: 0.5rem 0.6rem;
+    border-radius: 50%;
+    z-index: 99; /* High enough to float above content, but under modals/header */
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-glass);
 }
 
 .scrollup:hover {
     background-color: var(--accent-primary);
     opacity: 1;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
 }
 
 .scrollup-icon {
     font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.scrollup:hover .scrollup-icon {
     color: #fff;
 }
 
@@ -1538,14 +1558,6 @@ img {
         align-items: center;
     }
     
-    .skills-box {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .contact-info-cards {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* For medium devices (576px and below) */
@@ -1580,6 +1592,11 @@ img {
         grid-template-columns: 1fr; 
         gap: 1.5rem;
     }
+    
+    .skills-box {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 }
 
 /* For larger tablets (768px and up) */
@@ -1589,7 +1606,6 @@ img {
     }
     
     .skills-container {
-        grid-template-columns: repeat(2, 1fr);
         max-width: 100%;
     }
     
