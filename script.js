@@ -103,11 +103,14 @@ function scrollActive() {
         const sectionHeight = current.offsetHeight;
         const sectionTop = current.offsetTop - 100;
         const sectionId = current.getAttribute('id');
+        const navLink = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link');
-        } else {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link');
+        if (navLink) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLink.classList.add('active-link');
+            } else {
+                navLink.classList.remove('active-link');
+            }
         }
     });
 }

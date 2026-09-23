@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="pickle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#306998"/>
+      <stop offset="100%" style="stop-color:#FFD43B"/>
+    </linearGradient>
+  </defs>
+  <!-- Jar body -->
+  <rect x="22" y="30" width="56" height="52" rx="8" fill="#306998" opacity="0.9"/>
+  <!-- Jar lid -->
+  <rect x="18" y="22" width="64" height="12" rx="4" fill="#FFD43B"/>
+  <rect x="30" y="18" width="40" height="8" rx="3" fill="#FFD43B" opacity="0.8"/>
+  <!-- Python snake icon simplified -->
+  <path d="M42 48 C42 42 50 40 50 46 L50 56 C50 62 58 60 58 54" stroke="#FFD43B" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <circle cx="46" cy="44" r="2" fill="#FFD43B"/>
+  <circle cx="54" cy="58" r="2" fill="#FFD43B"/>
+  <!-- Label text -->
+  <text x="50" y="92" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="13" fill="#306998" letter-spacing="0.5">pickle</text>
+</svg>
